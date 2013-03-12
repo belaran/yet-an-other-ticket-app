@@ -35,6 +35,9 @@ public class BookingServicesDefaultImpl implements BookingService {
 		if ( customer == null || customers.get(customer.getUsername()) == null  )
 			throw new IllegalArgumentException("Customer not recognized:" + customer);
 		
+		if ( event == null )
+			throw new IllegalArgumentException("Event can't be null");
+		
 		Event availableEvent = events.get(event.getLabel());
 		if ( availableEvent != null && availableEvent.hasSeatAvailable() ) {			
 			Seat bookedSeat = new Seat(event, customer);

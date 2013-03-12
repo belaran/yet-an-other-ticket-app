@@ -15,6 +15,11 @@ public class Customer {
 		this.username = username;
 		this.password = password;		
 	}
+
+	public Customer(String username, String password) {
+		this.username = username;
+		this.password = password;				
+	}
 	
 	@Override
 	public int hashCode() {

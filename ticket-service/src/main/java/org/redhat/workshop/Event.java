@@ -19,7 +19,7 @@ public class Event {
 	}
 
 	public boolean hasSeatAvailable() {
-		return (allocatedSeat.size() - nbSeat) > 0;
+		return (nbSeat - allocatedSeat.size()) > 0;
 	}
 
 	public Event(String label) {

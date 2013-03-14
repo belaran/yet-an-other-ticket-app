@@ -7,7 +7,7 @@
 		<artifactId>yet-an-other-ticket-app</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>ticket-webapp</artifactId>
 	<packaging>war</packaging>
 
@@ -17,14 +17,28 @@
 			<artifactId>ticket-service</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		
-		<dependency>
-          <groupId>javax.servlet</groupId>
-	      <artifactId>servlet-api</artifactId>
-	      <version>2.5</version>
-	      <scope>provided</scope>
-		</dependency>
-		
+
+        <dependency>
+           <groupId>org.jboss.spec.javax.servlet</groupId>
+           <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+           <scope>provided</scope>
+           <version>1.0.1.Final-redhat-1</version>
+        </dependency>
+
 	</dependencies>
+
+    <build>
+      <finalName>ticket-webapp</finalName>
+      <plugins>
+        <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+          <configuration>
+          <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
 
 </project>

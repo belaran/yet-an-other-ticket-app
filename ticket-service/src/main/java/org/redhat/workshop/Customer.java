@@ -65,15 +65,11 @@ public class Customer {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", username=" + username + ", password="
-				+ password + ", seats=" + seats + "]";
+				+ password + ", seats=" + seats.size() + "]";
 	}
-
-
 
 	public long getId() {
 		return id;

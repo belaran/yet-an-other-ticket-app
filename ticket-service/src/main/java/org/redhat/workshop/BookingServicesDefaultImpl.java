@@ -32,16 +32,18 @@ public class BookingServicesDefaultImpl implements BookingService {
 	@Override
 	public Seat book(Event event, Customer customer) {
 		
-		if ( customer == null || customers.get(customer.getUsername()) == null  )
-			throw new IllegalArgumentException("Customer not recognized:" + customer);
-		
+		if ( customer == null )
+			throw new IllegalArgumentException("Customer can not be null:" + customer);
+		Customer registeredCustomer = customers.get(customer.getUsername());			
+			
 		if ( event == null )
 			throw new IllegalArgumentException("Event can't be null");
 		
 		Event availableEvent = events.get(event.getLabel());
 		if ( availableEvent != null && availableEvent.hasSeatAvailable() ) {			
-			Seat bookedSeat = new Seat(event, customer);
+			Seat bookedSeat = new Seat(availableEvent, registeredCustomer);
 			availableEvent.getAllocatedSeat().add(bookedSeat);
+			registeredCustomer.getSeats().add(bookedSeat);
 			return bookedSeat;
 		}
 		return new Seat();

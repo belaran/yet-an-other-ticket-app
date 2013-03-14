@@ -5,6 +5,13 @@ public class Seat {
 	private Event event;
 	private Customer customer;
 	
+	@Override
+	public String toString() {
+		if ( ! this.isBooked() )
+			return "No Seat booked.";
+		return "Seat booked for [" + event + "], by customer '" + customer + "'.";
+	}
+
 	public Seat(Event event, Customer customer) {
 		if ( event == null )
 			throw new IllegalArgumentException("Event can't be null:");
